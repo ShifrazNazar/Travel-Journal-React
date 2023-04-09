@@ -1,23 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar';
+import Card from './components/Card';
+import data from "./data"
 
 function App() {
+
+  const cards = data.map(item => {
+    return (
+        <Card
+            key={item.id}
+            title={item.title}
+            location={item.location}
+            map={item.googleMapsUrl}
+            description={item.description}
+            startDate={item.startDate}
+            endDate={item.endDate}
+            image={item.imageUrl}
+        />
+    )
+}) 
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='container'>
+        <Navbar />
+        {cards}
+      </div>
     </div>
   );
 }
